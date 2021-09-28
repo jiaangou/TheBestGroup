@@ -1,5 +1,5 @@
 # TheBestGroup
-Github group activity for the LDP Repro-Prod module 
+Pre-registration group project for the Productivity and Reproducibility in Ecology and Evolution module
 
 # Group Members: Kate, William, Kirsten, Stefano, and Julee
 
