@@ -1,19 +1,25 @@
 ---
-title           : "My preregistration for the COS Preregistration Challenge"
-shorttitle      : "My preregistration"
+title           : "LDP Mock Preregistration"
+shorttitle      : ""
 date            : '2021-10-06'
 
 author: 
-  - name        : First Author
+  - name        : Kirsten Bevandick
     affiliation : 1
-  - name        : Second Author
-    affiliation : "1,2"
+  - name        : Kate Colson
+    affiliation : 
+  - name        : Stefano Mezzini
+    affiliation : 
+  - name        : William Ou
+    affiliation : 
+  - name        : Julee Stewart
+    affiliation : 2
 
 affiliation:
   - id          : 1
-    institution : Wilhelm-Wundt-University
+    institution : University of British Columbia
   - id          : 2
-    institution : Konstanz Business School
+    institution : University of Regina
 
 output: prereg::cos_prereg
 ---
