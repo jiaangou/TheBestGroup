@@ -34,7 +34,7 @@ output: prereg::cos_prereg
 
     -   include at least 1 testable hypothesis?
 
-2.  **Data**
+2.  **Data** (Julee)
 
     -   Description of existing data and/or data collection procedures? (If existing data is included, is the reference(s) to the original data source included?)
 
@@ -58,7 +58,7 @@ output: prereg::cos_prereg
 
     -   Include a figure caption
 
-5.  **Literature**
+5.  **Literature** (Julee)
 
     -   Does the pre-registration include in-text citations and a bibliography of all studies mentioned?
 
