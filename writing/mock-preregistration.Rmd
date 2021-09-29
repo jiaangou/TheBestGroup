@@ -9,16 +9,18 @@ author:
   - name        : Kate Colson
     affiliation : 
   - name        : Stefano Mezzini
-    affiliation : 
+    affiliation : 2
   - name        : William Ou
     affiliation : 1
   - name        : Julee Stewart
-    affiliation : 2
+    affiliation : 3
 
 affiliation:
   - id          : 1
     institution : University of British Columbia
   - id          : 2
+    institution : University of British Columbia (Okanagan campus)
+  - id          : 3
     institution : University of Regina
 
 output: prereg::cos_prereg
