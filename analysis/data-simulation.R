@@ -36,17 +36,6 @@ m_c13 <- gam(d13c ~ s(depth_m),
              data = isotopes,
              method = 'REML')
 
-# not necessary for simulating new data ----------------------------------------
-#' C:N is strictly > 0, so it violates assumptions of normality.
-#' A Gamma  distribution is more appropriate. The `log` link function is
-#' necessary for satisfying the assumptions of normality of the residuals. 
-#' Note: `log(0) = -Inf` and `log(Inf) = Inf` => `log([0, Inf)) = (-Inf, Inf)`
-m_c_n <- gam(c_n_ratio ~ s(depth_m),
-             family = Gamma(link = 'log'),
-             data = isotopes,
-             method = 'REML')
-# ------------------------------------------------------------------------------
-
 #' There is no family in `mgcv` for values that are strictly between 0 and 100,
 #' so we need to convert %C and %N to the fraction of C and N in the sample.
 #' We can then use the beta distribution for values in the interval [0, 1].
@@ -148,4 +137,4 @@ ggsave(filename = 'figures/smoothed-datasets.png', plot = smoothed, width = 4,
        height = 4, scale = 1.5)
 
 # write the new dataset as a csv ----
-# write.csv(new_data, file = 'data/simulated-data.csv')
+readr::write_csv(new_data, file = 'data/simulated-data.csv')
