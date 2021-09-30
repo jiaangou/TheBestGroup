@@ -4,19 +4,6 @@ library(mgcv)
 
 IS <- read.csv(file.choose(), header=TRUE)
 
-################################################################################
-####' EDIT: cannot import data because the data file provided is different,
-####' and file.choose() prevents replicability
-####' also, note that the dating is missing from the dataset, so we can perform
-####' the analysis on the depth instead (even though this is not technically
-####' ideal and removes all of the issues and uncertainties around core dating)
-library('dplyr')
-isotopes <- readxl::read_xlsx('gushulak-et-al/Gall Lake all data.xlsx') %>%
-        select(`Depth(m)`:`%C`)
-glimpse(IS)
-IS <- 
-################################################################################
-
 ## N15
 
 N15<-gam(N15~s(Date, bs="tp"), data = IS, method = "REML")
