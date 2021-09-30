@@ -137,4 +137,6 @@ ggsave(filename = 'figures/smoothed-datasets.png', plot = smoothed, width = 4,
        height = 4, scale = 1.5)
 
 # write the new dataset as a csv ----
-readr::write_csv(new_data, file = 'data/simulated-data.csv')
+new_data %>%
+  select(-c(frac_n, frac_c, c_n_ratio)) %>%
+  readr::write_csv(file = 'data/simulated-data.csv')
