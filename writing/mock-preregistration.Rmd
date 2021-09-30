@@ -7,7 +7,7 @@ author:
   - name        : Kirsten Bevandick
     affiliation : 1
   - name        : Kate Colson
-    affiliation : 
+    affiliation : 1
   - name        : Stefano Mezzini
     affiliation : 2
   - name        : William Ou
@@ -56,7 +56,7 @@ NOTE: to knit using a bib file, you will need to install a different version of 
 
     -   include at least 1 testable hypothesis?
 
-2.  **Data** (Julee)
+2.  **Data** (Julee, Kate)
 
     -   Description of existing data and/or data collection procedures? (If existing data is included, is the reference(s) to the original data source included?)
 
