@@ -7,22 +7,46 @@ author:
   - name        : Kirsten Bevandick
     affiliation : 1
   - name        : Kate Colson
-    affiliation : 
+    affiliation : 1
   - name        : Stefano Mezzini
-    affiliation : 
+    affiliation : 2
   - name        : William Ou
     affiliation : 1
   - name        : Julee Stewart
-    affiliation : 2
+    affiliation : 3
 
 affiliation:
   - id          : 1
     institution : University of British Columbia
   - id          : 2
+    institution : University of British Columbia (Okanagan campus)
+  - id          : 3
     institution : University of Regina
 
-output: prereg::cos_prereg
+bibliography: 'prod-reprod-class-assignment-2.bib' # from Zotero, see below
+csl: freshwater-biology.csl # sets up citation style
+
+output: prereg::cos_prereg # determines output type and format
 ---
+
+<!--
+To make or update the .bib file:
+- import the bib file as a new collection (or update the existing one):
+  * File => import => next => select the file => (un)select "add to new collection" => ...
+- add any papers by DOI with the wand button
+- export the collection to a bib file by right-clicking on the collection and creating
+  a new BibTeX file and over-writing "prod-reprod-class-assignment-2.bib"
+- don't forget to push it to the GitHub repo!
+-->
+
+Citations in parentheses: [@gushulak_effects_2021], [but also, see @gushulak_effects_2021]
+
+Citation out of parentheses: @gushulak_effects_2021 state that...
+
+See what references you can add by opening the .bib file in a RStudio and using the name after `@{article` (e.g. `@article{gushulak_effects_2021`), or by running `citr:::insert_citation()` (requires installing `citr`).
+
+NOTE: to knit using a bib file, you will need to install a different version of `prereg` using
+`remotes::install_github("crsh/prereg@issue-16")`. not sure why this happens. -- Stefano
 
 # Roles
 
@@ -32,7 +56,7 @@ output: prereg::cos_prereg
 
     -   include at least 1 testable hypothesis?
 
-2.  **Data**
+2.  **Data** (Julee, Kate)
 
     -   Description of existing data and/or data collection procedures? (If existing data is included, is the reference(s) to the original data source included?)
 
@@ -56,7 +80,7 @@ output: prereg::cos_prereg
 
     -   Include a figure caption
 
-5.  **Literature**
+5.  **Literature** (Julee)
 
     -   Does the pre-registration include in-text citations and a bibliography of all studies mentioned?
 
