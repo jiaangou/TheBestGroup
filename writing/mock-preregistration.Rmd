@@ -280,7 +280,6 @@ This is perhaps the most important and most complicated question within the prer
 
 Example:  We will use a one-way between subjects ANOVA to analyze our results. The manipulated, categorical independent variable is 'sugar' whereas the dependent variable is our taste index. -->
 ```
-
 Similarly to @gushulak_effects_2021, the isotope data was analyzed using Generalized Additive Models (GAMs) via the `mgcv` package [@wood_fast_2011; @wood_generalized_2017]. The amount of $^{15}$N and $^13$C (`d15n` and `d13c` in the `R` scripts, respectively) were modeled using a Gaussian conditional distribution with an *identity* link function since both parameters take any real value (i.e. they can be both positive and negative). The percentages of nitrogen and carbon in the samples (`perc_n` and `perc_c`, respectively) were converted to proportions (`frac_n` and `frac_c`) so they coould be modeled with a beta distribution with a *logit* link function. (There is no distribution in the `mgcv` package for numbers between 0 and 100). Finally, the proportion of carbon to nitrogen (C:N, `c_n_ratio` in the scripts) were modeled using a GAM with a gamma conditional distribution and a *log* link function. A gamma distribution was most appropriate since the ratio of two positive (non-zero) numbers is strictly greater than zero. The mean effects and their Bayesian credible intervals (CIs) were estimated on the link scale using normal approximation ($\pm 1.96$ standard deviations) and back-transformed to response values using the inverse-link function. For example, the mean C:N ratios and their CIs was estimated on the *log* scale and then back-transformed to ratios by exponentiating the estimate. (See the following section for more information on GAMs and transformations.)
 
 All five models accounted for a shared global trend between replicates and trends within-replicate. For simplicity, the smoothness parameter was assumed to be the same between replicates [see model "GS" in @pedersen_hierarchical_2019].
@@ -329,7 +328,7 @@ m_c_n <- gam(c_n_ratio ~
 
 Thus, each model had two predictors: a predictor which accounted for the mean effect of lake depth (`s(depth_m, k = 15)`) and one which used factor smooths (`bs = 'fs'`) for each replicate. Both of the predictors used thin plate regression splines (the default for the `s()` function in `mgcv`). The number of knots (`k`) for each smooth was allowed to be reasonably high, since the models were fit via penalized maximum likelihood and thus over-fitting the data was unlikely [@wood_fast_2011; @simpson_modelling_2018]. The smoothness parameters were optimized using Restricted Marginal Likelihood (`method = 'REML'`), rather than the default Generalized Cross Validation (GCV), since REML does not over-fit as often as GCV [@reiss_smoothing_2009; @wood_fast_2011].
 
-Although credible intervals were estimated, this study was performed with a purely Bayesian approach, so there was no interest in statistical significance and Frequentist null-hypothesis testing. Rather, the models were used to compare similarities between our estimates and the estimates by @gushulak_effects_2021. 
+Although credible intervals were estimated, this study was performed with a purely Bayesian approach, so there was no interest in statistical significance and Frequentist null-hypothesis testing. Rather, the models were used to compare similarities between our estimates and the estimates by @gushulak_effects_2021.
 
 ## Transformations {#transformations}
 
@@ -338,11 +337,9 @@ Although credible intervals were estimated, this study was performed with a pure
 
 Example: The "Effect of sugar on brownie tastiness" does not require any additional transformations. However, if it were using a regression analysis and each level of sweet had been categorically described (e.g. not sweet, somewhat sweet, sweet, and very sweet), 'sweet' could be dummy coded with 'not sweet' as the reference category. -->
 ```
-
 The only data transformation that was performed was the conversion of percent carbon and nitrogen (between 0% and 100%) to proportions (between 0 and 1). Note that since the transformation $a = \frac{b}{100}$ is a linear transformation, Jensen's inequality does not apply here [@jensen_sur_1906].
 
-Modeling the data with GAMs removes the need for transforming data which violates the normality assumptions which linear models depend on: GAMs estimate transformed mean responses ($g[\mathbb E(Y)]$, where $g(\cdot)$ is the link function) rather than the mean transformed response ($\mathbb E[g(Y)]$), so Jensen's inequality [@jensen_sur_1906] does not apply here.
-## Inference criteria
+Modeling the data with GAMs removes the need for transforming data which violates the normality assumptions which linear models depend on: GAMs estimate transformed mean responses ($g[\mathbb E(Y)]$, where $g(\cdot)$ is the link function) rather than the mean transformed response ($\mathbb E[g(Y)]$), so Jensen's inequality [@jensen_sur_1906] does not apply here. \#\# Inference criteria
 
 ```{=html}
 <!-- What criteria will you use to make inferences? Please describe the information youÍll use (e.g. p-values, bayes factors, specific model fit indices), as well as cut-off criterion, where appropriate. Will you be using one or two tailed tests for each of your analyses? If you are comparing multiple conditions or testing multiple hypotheses, will you account for this?
