@@ -174,7 +174,7 @@ An appropriate instance of using existing data would be collecting a sample size
 
 Example: An appropriate instance of using existing data would be collecting a sample size much larger than is required for the study, using a small portion of it to conduct exploratory analysis, and then registering one particular analysis that showed promising results. After registration, conduct the specified analysis on that part of the dataset that had not been investigated by the researcher up to that point. -->
 ```
-Enter your response here.
+Existing data will not be used in our replication study.
 
 ## Data collection procedures
 
@@ -185,7 +185,11 @@ The answer to this question requires a specific set of instructions so that anot
 
 Example: Participants will be recruited through advertisements at local pastry shops. Participants will be paid $10 for agreeing to participate (raised to $30 if our sample size is not reached within 15 days of beginning recruitment). Participants must be at least 18 years old and be able to eat the ingredients of the pastries. -->
 ```
-Enter your response here.
+Data will be collected at the Gall Lake study site ($50^{o} 11''$ N, $90^{o} 42''$ W) located in Ontario, Canada.This undisturbed study site is surrounded by boreal forest with a high abundance of black spruce, jack pine, and poplar and a lower abundance of birch, balsam fir, and larch. \@kingsbury2012 have described the physical and chemical characteristics of Gall Lake.
+
+Surface sediment samples (0-1cm) will be collected using a mini-Glew gravity coring apparatus [@glew1991] from 112 locations along three depth transects in Gall Lake's eastern basin, as was done in @gushulak_effects_2021.
+
+The stable isotope analysis from the surface sediment samples will be conducted using standard methods [@savage2004; @bunting2010] using Thermo Finnigan Delta V isotope ratio mass spectrometer that is equipped with a ConFlow IV dilution inlet system, to ensure consistency with the methods of @gushulak_effects_2021.
 
 ## Sample size
 
