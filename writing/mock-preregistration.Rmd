@@ -1,34 +1,31 @@
 ---
-title           : "LDP Mock Preregistration"
-shorttitle      : ""
-date            : '2021-10-06'
-
-author: 
-  - name        : Kirsten Bevandick
-    affiliation : 1
-  - name        : Kate Colson
-    affiliation : 1
-  - name        : Stefano Mezzini
-    affiliation : 2
-  - name        : William Ou
-    affiliation : 1
-  - name        : Julee Stewart
-    affiliation : 3
-
+title: "LDP Mock Preregistration"
+author:
+- name: Kirsten Bevandick
+  affiliation: 1
+- name: Kate Colson
+  affiliation: 1
+- name: Stefano Mezzini
+  affiliation: 2
+- name: William Ou
+  affiliation: 1
+- name: Julee Stewart
+  affiliation: 3
+date: '2021-10-06'
+output: prereg::cos_prereg
 affiliation:
-  - id          : 1
-    institution : University of British Columbia
-  - id          : 2
-    institution : University of British Columbia (Okanagan campus)
-  - id          : 3
-    institution : University of Regina
-
-bibliography: 'prod-reprod-class-assignment-2.bib' # from Zotero, see below
-csl: freshwater-biology.csl # sets up citation style
-
-output: prereg::cos_prereg # determines output type and format
+- id: 1
+  institution: University of British Columbia
+- id: 2
+  institution: University of British Columbia (Okanagan campus)
+- id: 3
+  institution: University of Regina
+bibliography: prod-reprod-class-assignment-2.bib
+csl: freshwater-biology.csl
+shorttitle: ''
 ---
 
+```{=html}
 <!--
 To make or update the .bib file:
 - import the bib file as a new collection (or update the existing one):
@@ -38,15 +35,14 @@ To make or update the .bib file:
   a new BibTeX file and over-writing "prod-reprod-class-assignment-2.bib"
 - don't forget to push it to the GitHub repo!
 -->
-
+```
 Citations in parentheses: [@gushulak_effects_2021], [but also, see @gushulak_effects_2021]
 
 Citation out of parentheses: @gushulak_effects_2021 state that...
 
 See what references you can add by opening the .bib file in a RStudio and using the name after `@{article` (e.g. `@article{gushulak_effects_2021`), or by running `citr:::insert_citation()` (requires installing `citr`).
 
-NOTE: to knit using a bib file, you will need to install a different version of `prereg` using
-`remotes::install_github("crsh/prereg@issue-16")`. not sure why this happens. -- Stefano
+NOTE: to knit using a bib file, you will need to install a different version of `prereg` using `remotes::install_github("crsh/prereg@issue-16")`. not sure why this happens. -- Stefano
 
 # Roles
 
@@ -239,7 +235,9 @@ Enter your response here.
 
 Example: We manipulated the percentage of sugar by mass added to brownies. The four levels of this categorical variable are: 15%, 20%, 25%, or 40% cane sugar by mass. -->
 ```
-Enter your response here.
+#### Depth
+
+For phytobenthos analyses, we will manipulate the depth that surface sediment samples are collected. Three sediment samples will be collected for every 1-m depth interval of Gall Lake. Samples for this categorical variable will range from a 1-m to 16-m depth and will be determined with the use of a depth sounder. In R scripts, this manipulated variable will be named "depth_m".
 
 ## Measured variables
 
@@ -250,7 +248,9 @@ Observational studies and meta-analyses will include only measured variables. As
 
 Example: The single outcome variable will be the perceived tastiness of the single brownie each participant will eat. We will measure this by asking participants ‘How much did you enjoy eating the brownie’ (on a scale of 1-7, 1 being 'not at all', 7 being 'a great deal') and 'How good did the brownie taste' (on a scale of 1-7, 1 being 'very bad', 7 being 'very good'). -->
 ```
-Enter your response here.
+#### Stable Isotopic Analysis
+
+The single outcome variables for the stable isotopic ratio of nitrogen and carbon will be measured from freeze-dried sediment subsamples of Gall Lake. Samples will be placed in a Thermo Finnigan Delta V isotope ratio mass spectrometer that has a ConFlow IV dilution inlet system as described by \@gushulak_effects_2021. Following the calibration procedure for laboratory standards explained in Bunting et al. (2010) and Savage et al. (2004), the isotope values will be analyzed with the use of atmospheric gas. The standard notation for the stable isotopic ratio of nitrogen and carbon are 15N and 13C, respectively. In R scripts, these single outcome variables will be named "d15n" and "d13c" for nitrogen and carbon, respectively. *how do we use symbols in R markdown?*
 
 ## Indices
 
@@ -261,7 +261,9 @@ If you are using multiple pieces of data to construct a single variable, how wil
 
 Example: We will take the mean of the two questions above to create a single measure of 'brownie enjoyment.'  -->
 ```
-Enter your response here.
+#### Nitrogen and Carbon Content
+
+Using generalized additive models, we will be determining the percent content of nitrogen and carbon in the depth intervals of Gall lake by manipulating the stable isotope content of these elements. Specifically, gamma distributions as described by Mushet et al. (2019) will be used to determine the percent content. In R scripts, the manipulated variables will be named "perc_n" and "perc_c" for nitrogen and carbon, respectively. *equation?*
 
 # Analysis Plan
 
@@ -327,7 +329,7 @@ Enter your response here.
 
 Example: We expect that certain demographic traits may be related to taste preferences. Therefore, we will look for relationships between demographic variables (age, gender, income, and marital status) and the primary outcome measures of taste preferences. -->
 ```
-Enter your response here.
+N/A
 
 # Other
 
