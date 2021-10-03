@@ -29,6 +29,7 @@ csl: freshwater-biology.csl # sets up citation style
 output: prereg::cos_prereg # determines output type and format
 ---
 
+```{=html}
 <!--
 To make or update the .bib file:
 - import the bib file as a new collection (or update the existing one):
@@ -38,15 +39,14 @@ To make or update the .bib file:
   a new BibTeX file and over-writing "prod-reprod-class-assignment-2.bib"
 - don't forget to push it to the GitHub repo!
 -->
-
+```
 Citations in parentheses: [@gushulak_effects_2021], [but also, see @gushulak_effects_2021]
 
 Citation out of parentheses: @gushulak_effects_2021 state that...
 
 See what references you can add by opening the .bib file in a RStudio and using the name after `@{article` (e.g. `@article{gushulak_effects_2021`), or by running `citr:::insert_citation()` (requires installing `citr`).
 
-NOTE: to knit using a bib file, you will need to install a different version of `prereg` using
-`remotes::install_github("crsh/prereg@issue-16")`. not sure why this happens. -- Stefano
+NOTE: to knit using a bib file, you will need to install a different version of `prereg` using `remotes::install_github("crsh/prereg@issue-16")`. not sure why this happens. -- Stefano
 
 # Roles
 
