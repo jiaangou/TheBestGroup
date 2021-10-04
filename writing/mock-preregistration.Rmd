@@ -1,34 +1,31 @@
 ---
-title           : "LDP Mock Preregistration"
-shorttitle      : ""
-date            : '2021-10-06'
-
-author: 
-  - name        : Kirsten Bevandick
-    affiliation : 1
-  - name        : Kate Colson
-    affiliation : 1
-  - name        : Stefano Mezzini
-    affiliation : 2
-  - name        : William Ou
-    affiliation : 1
-  - name        : Julee Stewart
-    affiliation : 3
-
+title: "LDP Mock Preregistration"
+author:
+- name: Kirsten Bevandick
+  affiliation: 1
+- name: Kate Colson
+  affiliation: 1
+- name: Stefano Mezzini
+  affiliation: 2
+- name: William Ou
+  affiliation: 1
+- name: Julee Stewart
+  affiliation: 3
+date: '2021-10-06'
+output: prereg::cos_prereg
 affiliation:
-  - id          : 1
-    institution : University of British Columbia
-  - id          : 2
-    institution : University of British Columbia (Okanagan campus)
-  - id          : 3
-    institution : University of Regina
-
-bibliography: 'prod-reprod-class-assignment-2.bib' # from Zotero, see below
-csl: freshwater-biology.csl # sets up citation style
-
-output: prereg::cos_prereg # determines output type and format
+- id: 1
+  institution: University of British Columbia
+- id: 2
+  institution: University of British Columbia (Okanagan campus)
+- id: 3
+  institution: University of Regina
+bibliography: prod-reprod-class-assignment-2.bib
+csl: freshwater-biology.csl
+shorttitle: ''
 ---
 
+```{=html}
 <!--
 To make or update the .bib file:
 - import the bib file as a new collection (or update the existing one):
@@ -38,15 +35,14 @@ To make or update the .bib file:
   a new BibTeX file and over-writing "prod-reprod-class-assignment-2.bib"
 - don't forget to push it to the GitHub repo!
 -->
-
+```
 Citations in parentheses: [@gushulak_effects_2021], [but also, see @gushulak_effects_2021]
 
 Citation out of parentheses: @gushulak_effects_2021 state that...
 
 See what references you can add by opening the .bib file in a RStudio and using the name after `@{article` (e.g. `@article{gushulak_effects_2021`), or by running `citr:::insert_citation()` (requires installing `citr`).
 
-NOTE: to knit using a bib file, you will need to install a different version of `prereg` using
-`remotes::install_github("crsh/prereg@issue-16")`. not sure why this happens. -- Stefano
+NOTE: to knit using a bib file, you will need to install a different version of `prereg` using `remotes::install_github("crsh/prereg@issue-16")`. not sure why this happens. -- Stefano
 
 # Roles
 
@@ -169,14 +165,6 @@ Enter your response here.
 
 **Registration prior to creation of data**. As of the date of submission of this research plan for preregistration, the data have not yet been collected, created, or realized.
 
-**Registration prior to any human observation of the data**. As of the date of submission, the data exist but have not yet been quantified, constructed, observed, or reported by anyone - including individuals that are not associated with the proposed study. Examples include museum specimens that have not been measured and data that have been collected by non-human collectors and are inaccessible.
-
-**Registration prior to accessing the data**. As of the date of submission, the data exist, but have not been accessed by you or your collaborators. Commonly, this includes data that has been collected by another researcher or institution.
-
-**Registration prior to analysis of the data**. As of the date of submission, the data exist and you have accessed it, though no analysis has been conducted related to the research plan (including calculation of summary statistics). A common situation for this scenario when a large dataset exists that is used for many different studies over time, or when a data set is randomly split into a sample for exploratory analyses, and the other section of data is reserved for later confirmatory data analysis.
-
-**Registration following analysis of the data**. As of the date of submission, you have accessed and analyzed some of the data relevant to the research plan. This includes preliminary analysis of variables, calculation of descriptive statistics, and observation of data distributions. Please see <https://cos.io/prereg> for more information.
-
 ## Explanation of existing data
 
 ```{=html}
@@ -186,7 +174,7 @@ An appropriate instance of using existing data would be collecting a sample size
 
 Example: An appropriate instance of using existing data would be collecting a sample size much larger than is required for the study, using a small portion of it to conduct exploratory analysis, and then registering one particular analysis that showed promising results. After registration, conduct the specified analysis on that part of the dataset that had not been investigated by the researcher up to that point. -->
 ```
-Enter your response here.
+Existing data will not be used in our replication study.
 
 ## Data collection procedures
 
@@ -197,7 +185,11 @@ The answer to this question requires a specific set of instructions so that anot
 
 Example: Participants will be recruited through advertisements at local pastry shops. Participants will be paid $10 for agreeing to participate (raised to $30 if our sample size is not reached within 15 days of beginning recruitment). Participants must be at least 18 years old and be able to eat the ingredients of the pastries. -->
 ```
-Enter your response here.
+Data will be collected at the Gall Lake study site ($50^{o} 11''$ N, $90^{o} 42''$ W) located in Ontario, Canada.This undisturbed study site is surrounded by boreal forest with a high abundance of black spruce, jack pine, and poplar and a lower abundance of birch, balsam fir, and larch. \@kingsbury2012 have described the physical and chemical characteristics of Gall Lake.
+
+Surface sediment samples (0-1cm) will be collected using a mini-Glew gravity coring apparatus [@glew1991] from 112 locations along three depth transects in Gall Lake's eastern basin, as was done in @gushulak_effects_2021.
+
+The stable isotope analysis from the surface sediment samples will be conducted using standard methods [@savage2004; @bunting2010] using Thermo Finnigan Delta V isotope ratio mass spectrometer that is equipped with a ConFlow IV dilution inlet system, to ensure consistency with the methods of @gushulak_effects_2021.
 
 ## Sample size
 
@@ -239,7 +231,9 @@ Enter your response here.
 
 Example: We manipulated the percentage of sugar by mass added to brownies. The four levels of this categorical variable are: 15%, 20%, 25%, or 40% cane sugar by mass. -->
 ```
-Enter your response here.
+#### Depth
+
+For phytobenthos analyses, we will manipulate the depth that surface sediment samples are collected. Four sediment samples will be collected for every 1-m depth interval of Gall Lake. Samples for this categorical variable will range from a 1-m to 16-m depth and will be determined with the use of a depth sounder [@gushulak_effects_2021]. In R scripts, this manipulated variable will be named `depth_m`.
 
 ## Measured variables
 
@@ -250,7 +244,9 @@ Observational studies and meta-analyses will include only measured variables. As
 
 Example: The single outcome variable will be the perceived tastiness of the single brownie each participant will eat. We will measure this by asking participants ‘How much did you enjoy eating the brownie’ (on a scale of 1-7, 1 being 'not at all', 7 being 'a great deal') and 'How good did the brownie taste' (on a scale of 1-7, 1 being 'very bad', 7 being 'very good'). -->
 ```
-Enter your response here.
+#### Stable Isotopic Analysis
+
+The single outcome variables for the stable isotopic ratio of nitrogen and carbon will be measured from freeze-dried sediment subsamples of Gall Lake. Samples will be placed in a Thermo Finnigan Delta V isotope ratio mass spectrometer that has a ConFlow IV dilution inlet system as described by @gushulak_effects_2021 Following the calibration procedure for laboratory standards explained in @bunting2010 and @savage2004 , the isotope values will be analyzed with the use of atmospheric gas. The standard notation for the stable isotopic ratio of nitrogen and carbon are $\delta^{15}$N and $\delta^{13}$C, respectively. In R scripts, these single outcome variables will be named `d15n` and `d13c` for nitrogen and carbon, respectively.
 
 ## Indices
 
@@ -261,7 +257,11 @@ If you are using multiple pieces of data to construct a single variable, how wil
 
 Example: We will take the mean of the two questions above to create a single measure of 'brownie enjoyment.'  -->
 ```
-Enter your response here.
+#### Nitrogen and Carbon Content
+
+Using generalized additive models, we will be determining the percent content of nitrogen and carbon in the depth intervals of Gall lake by manipulating the stable isotope content of these elements. Specifically, gamma distributions as described by @mushet2020 will be used to determine the percent content. In R scripts, the manipulated variables will be named `perc_n` and `perc_c` for nitrogen and carbon, respectively.
+
+ *equation?*
 
 # Analysis Plan
 
@@ -282,18 +282,66 @@ This is perhaps the most important and most complicated question within the prer
 
 Example:  We will use a one-way between subjects ANOVA to analyze our results. The manipulated, categorical independent variable is 'sugar' whereas the dependent variable is our taste index. -->
 ```
-Enter your response here.
+Similarly to @gushulak_effects_2021, the isotope data was analyzed using Generalized Additive Models (GAMs) via the `mgcv` package [@wood_fast_2011; @wood_generalized_2017]. The amount of $^{15}$N and $^13$C (`d15n` and `d13c` in the `R` scripts, respectively) were modeled using a Gaussian conditional distribution with an *identity* link function since both parameters take any real value (i.e. they can be both positive and negative). The percentages of nitrogen and carbon in the samples (`perc_n` and `perc_c`, respectively) were converted to proportions (`frac_n` and `frac_c`) so they coould be modeled with a beta distribution with a *logit* link function. (There is no distribution in the `mgcv` package for numbers between 0 and 100). Finally, the proportion of carbon to nitrogen (C:N, `c_n_ratio` in the scripts) were modeled using a GAM with a gamma conditional distribution and a *log* link function. A gamma distribution was most appropriate since the ratio of two positive (non-zero) numbers is strictly greater than zero. The mean effects and their Bayesian credible intervals (CIs) were estimated on the link scale using normal approximation ($\pm 1.96$ standard deviations) and back-transformed to response values using the inverse-link function. For example, the mean C:N ratios and their CIs was estimated on the *log* scale and then back-transformed to ratios by exponentiating the estimate. (See the following section for more information on GAMs and transformations.)
 
-## Transformations
+All five models accounted for a shared global trend between replicates and trends within-replicate. For simplicity, the smoothness parameter was assumed to be the same between replicates [see model "GS" in @pedersen_hierarchical_2019].
+
+```{r models, eval = FALSE}
+# stable nitrogen isotope
+m_d15n <- gam(d15n ~
+                s(depth_m, k = 15) + # average effect of depth
+                s(depth_m, replicate, k = 10, bs = 'fs'), # effect of replicate
+              family = gaussian(link = 'identity'), # I(k) = k
+              data = isotopes,
+              method = 'REML') # optimiziation method for the smoothness parameter
+
+# stable carbon isotope
+m_d13c <- gam(d13c ~
+                s(depth_m, k = 15) +
+                s(depth_m, replicate, k = 10, bs = 'fs'),
+              family = gaussian(link = 'identity'),
+              data = isotopes,
+              method = 'REML')
+
+# fraction of carbon in the samples
+m_frac_c <- gam(frac_c ~
+                  s(depth_m, k = 15) +
+                  s(depth_m, replicate, k = 10, bs = 'fs'),
+                family = betar(link = 'logit'), # logit(0) = -Inf, logit(1) = Inf
+                data = isotopes,
+                method = 'REML')
+
+# fraction of nitrogen in the samples
+m_frac_n <- gam(frac_n ~
+                  s(depth_m, k = 15) +
+                  s(depth_m, replicate, k = 10, bs = 'fs'),
+                family = betar(link = 'logit'),
+                data = isotopes,
+                method = 'REML')
+
+#C:N ratio in the samples
+m_c_n <- gam(c_n_ratio ~
+               s(depth_m, k = 15) +
+               s(depth_m, replicate, k = 10, bs = 'fs'),
+             family = Gamma(link = 'log'), # log(0) = -Inf, log(Inf) = Inf
+             data = isotopes,
+             method = 'REML')
+```
+
+Thus, each model had two predictors: a predictor which accounted for the mean effect of lake depth (`s(depth_m, k = 15)`) and one which used factor smooths (`bs = 'fs'`) for each replicate. Both of the predictors used thin plate regression splines (the default for the `s()` function in `mgcv`). The number of knots (`k`) for each smooth was allowed to be reasonably high, since the models were fit via penalized maximum likelihood and thus over-fitting the data was unlikely [@wood_fast_2011; @simpson_modelling_2018]. The smoothness parameters were optimized using Restricted Marginal Likelihood (`method = 'REML'`), rather than the default Generalized Cross Validation (GCV), since REML does not over-fit as often as GCV [@reiss_smoothing_2009; @wood_fast_2011].
+
+Although credible intervals were estimated, this study was performed with a purely Bayesian approach, so there was no interest in statistical significance and Frequentist null-hypothesis testing. Rather, the models were used to compare similarities between our estimates and the estimates by @gushulak_effects_2021.
+
+## Transformations {#transformations}
 
 ```{=html}
 <!-- If you plan on transforming, centering, recoding the data, or will require a coding scheme for categorical variables, please describe that process. If any categorical predictors are included in a regression, indicate how those variables will be coded (e.g. dummy coding, summation coding, etc.) and what the reference category will be.
 
 Example: The "Effect of sugar on brownie tastiness" does not require any additional transformations. However, if it were using a regression analysis and each level of sweet had been categorically described (e.g. not sweet, somewhat sweet, sweet, and very sweet), 'sweet' could be dummy coded with 'not sweet' as the reference category. -->
 ```
-Enter your response here.
+The only data transformation that was performed was the conversion of percent carbon and nitrogen (between 0% and 100%) to proportions (between 0 and 1). Note that since the transformation $a = \frac{b}{100}$ is a linear transformation, Jensen's inequality does not apply here [@jensen_sur_1906].
 
-## Inference criteria
+Modeling the data with GAMs removes the need for transforming data which violates the normality assumptions which linear models depend on: GAMs estimate transformed mean responses ($g[\mathbb E(Y)]$, where $g(\cdot)$ is the link function) rather than the mean transformed response ($\mathbb E[g(Y)]$), so Jensen's inequality [@jensen_sur_1906] does not apply here. \#\# Inference criteria
 
 ```{=html}
 <!-- What criteria will you use to make inferences? Please describe the information youÍll use (e.g. p-values, bayes factors, specific model fit indices), as well as cut-off criterion, where appropriate. Will you be using one or two tailed tests for each of your analyses? If you are comparing multiple conditions or testing multiple hypotheses, will you account for this?
@@ -327,7 +375,7 @@ Enter your response here.
 
 Example: We expect that certain demographic traits may be related to taste preferences. Therefore, we will look for relationships between demographic variables (age, gender, income, and marital status) and the primary outcome measures of taste preferences. -->
 ```
-Enter your response here.
+N/A
 
 # Other
 
