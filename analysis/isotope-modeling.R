@@ -1,3 +1,4 @@
+library('readr')   # for read_csv() and cols()
 library('ggplot2') # for fancy plots
 library('mgcv')    # for modeling
 library('dplyr')   # for data wrangling, e.g., %>%, mutate(), select()
@@ -13,16 +14,14 @@ theme_set(theme_bw() +
 
 # import data and add necessary columns ----
 isotopes <-
-  readr::read_csv('data/simulated-data.csv',
-                  col_types = readr::cols(.default = 'd', replicate = 'f')) %>%
-  mutate(c_n_ratio = perc_c / perc_n, # create C:N ratio
-         frac_n = perc_n / 100, # change to fractions to use Beta distribution,
-         frac_c = perc_c / 100) # which is appropriate for values bound [0, 1]
+  read_csv('data/simulated-data.csv',
+           col_types = cols(.default = 'd', replicate = 'f', basin = 'f')) %>%
+  mutate(c_n_ratio = frac_c / frac_n) # create C:N ratio
 
 # convert to "long" format for easier plotting
 isotopes_long <-
   isotopes %>%
-  select(-c(frac_n, frac_c, replicate)) %>%
+  select(-c(replicate, basin)) %>%
   pivot_longer(-depth_m, names_to = 'parameter') %>%
   # fancy labels for ggplots
   mutate(label = case_when(parameter == 'c.n.ratio' ~ 'C:N~ratio',
@@ -53,15 +52,23 @@ ggplot(isotopes_long, aes(value, depth_m)) +
 
 # d15N and d13C can be positive or negative, so assuming normality is ok
 m_d15n <- gam(d15n ~
-                s(depth_m, k = 15) + # average effect of depth
-                s(depth_m, replicate, k = 10, bs = 'fs'), # effect of replicate
+                # average effect of depth across all basins and replicates
+                s(depth_m, k = 15) +
+                # effect of basin (keep complexity < that of global smooth)
+                s(depth_m, basin, k = 10, bs = 'fs') +
+                # effect of replicates (keep complexity < that of basin)
+                s(depth_m, replicate, k = 5, bs = 'fs'),
               family = gaussian(link = 'identity'),
               data = isotopes,
-              method = 'REML') # optimiziation method for the smoothness parameter
+              method = 'REML') # optimization method for the smoothness param
 
 m_d13c <- gam(d13c ~
+                # average effect of depth across all basins and replicates
                 s(depth_m, k = 15) +
-                s(depth_m, replicate, k = 10, bs = 'fs'),
+                # effect of basin
+                s(depth_m, basin, k = 10, bs = 'fs') +
+                # effect of replicates
+                s(depth_m, replicate, k = 5, bs = 'fs'),
               family = gaussian(link = 'identity'),
               data = isotopes,
               method = 'REML')
@@ -71,8 +78,12 @@ m_d13c <- gam(d13c ~
 #' necessary for satisfying the assumptions of normality of the residuals. 
 #' Note: `log(0) = -Inf` and `log(Inf) = Inf`, so `log([0, Inf)) = (-Inf, Inf)`
 m_c_n <- gam(c_n_ratio ~
+               # average effect of depth across all basins and replicates
                s(depth_m, k = 15) +
-               s(depth_m, replicate, k = 10, bs = 'fs'),
+               # effect of basin
+               s(depth_m, basin, k = 10, bs = 'fs') +
+               # effect of replicates
+               s(depth_m, replicate, k = 5, bs = 'fs'),
              family = Gamma(link = 'log'),
              data = isotopes,
              method = 'REML')
@@ -85,15 +96,23 @@ m_c_n <- gam(c_n_ratio ~
 #' If we call the proportions `p` with `0 <= p <= 1`, we have:
 #' `logit([0, 1)) = log(odds(0), odds(1)) = log(0, Inf) = (-Inf, Inf)`
 m_frac_c <- gam(frac_c ~
+                  # average effect of depth across all basins and replicates
                   s(depth_m, k = 15) +
-                  s(depth_m, replicate, k = 10, bs = 'fs'),
+                  # effect of basin
+                  s(depth_m, basin, k = 10, bs = 'fs') +
+                  # effect of replicates
+                  s(depth_m, replicate, k = 5, bs = 'fs'),
                 family = betar(link = 'logit'),
                 data = isotopes,
                 method = 'REML')
 
 m_frac_n <- gam(frac_n ~
+                  # average effect of depth across all basins and replicates
                   s(depth_m, k = 15) +
-                  s(depth_m, replicate, k = 10, bs = 'fs'),
+                  # effect of basin
+                  s(depth_m, basin, k = 10, bs = 'fs') +
+                  # effect of replicates
+                  s(depth_m, replicate, k = 5, bs = 'fs'),
                 family = betar(link = 'logit'),
                 data = isotopes,
                 method = 'REML')
@@ -101,39 +120,47 @@ m_frac_n <- gam(frac_n ~
 # model diagnostics ----
 B <- round(log2(nrow(isotopes))) + 1 # number of histogram bins
 
-appraise(m_d15n, n_bins = B) # some heteroskedasticity
-appraise(m_d13c, n_bins = B) # ok
-appraise(m_c_n, n_bins = B) # some high outliers
-appraise(m_frac_c, n_bins = B) # no issues (ignore q-q plot)
-appraise(m_frac_n, n_bins = B) # high variance at lower depths
+appraise(m_d15n, n_bins = B) # no issues
+appraise(m_d13c, n_bins = B) # no issues
+appraise(m_c_n, n_bins = B) # no issues
+appraise(m_frac_c, n_bins = B) # no issues, but low data density at low values
+appraise(m_frac_n, n_bins = B) # no issues, but lower data density at low values
 
-draw(m_d15n, residuals = TRUE)
-draw(m_d13c, residuals = TRUE)
-draw(m_c_n, residuals = TRUE)
-draw(m_frac_c, residuals = TRUE)
-draw(m_frac_n, residuals = TRUE)
+draw(m_d15n, residuals = TRUE, scales = 'fixed')
+draw(m_d13c, residuals = TRUE, scales = 'fixed')
+draw(m_c_n, residuals = TRUE, scales = 'fixed')
+draw(m_frac_c, residuals = TRUE, scales = 'fixed')
+draw(m_frac_n, residuals = TRUE, scales = 'fixed')
 
 # make predictions from the fitted models ----
-new_data <- tibble(depth_m = seq(1, 16, length.out = 400),
-                   replicate = 'ignore')
+new_data <- expand_grid(depth_m = seq(1, 16, length.out = 400),
+                        basin = unique(isotopes$basin),
+                        replicate = 'ignore')
 
 make_preds <- function(model) {
-  link_inv <- model$family$linkinv # find inverse link function
+  link_inv <- model$family$linkinv # get inverse link function
   param <- names(model$model[1]) # name of the response variable
+  
+  # change "frac" to "perc"
+  param <- if_else(grepl('frac', param), gsub('frac', 'perc', param), param)
   
   bind_cols(new_data,
             predict.gam(model, newdata = new_data, type = 'link',
-                        se.fit = TRUE, terms = 's(depth_m)')) %>%
+                        se.fit = TRUE, exclude = c('s(depth_m,replicate)'))) %>%
     # convert fractions to percentages, and keep the rest the same
     mutate(parameter = param,
            mu = link_inv(fit), # move mean to the response scale
            lwr = link_inv(fit - 1.96 * se.fit), # create 95% CIs, then move back
            upr = link_inv(fit + 1.96 * se.fit), # to response scale
-           # fancy labels for ggplots (**fractions are actually percentages!**)
+           # change fractions back to percentages
+           lwr = lwr * if_else(grepl('perc', param), true = 100, false = 1),
+           mu = mu * if_else(grepl('perc', param), true = 100, false = 1),
+           upr = upr * if_else(grepl('perc', param), true = 100, false = 1),
+           # fancy labels for ggplots
            label = case_when(parameter == 'd15n' ~ 'delta^{15}~N~\'\211\'',
-                             parameter == 'frac_n' ~ 'N~\'\045\'~dry~mass',
+                             parameter == 'perc_n' ~ 'N~\'\045\'~dry~mass',
                              parameter == 'd13c' ~ 'delta^{13}~C~\'\211\'',
-                             parameter == 'frac_c' ~ 'C~\'\045\'~dry~mass',
+                             parameter == 'perc_c' ~ 'C~\'\045\'~dry~mass',
                              parameter == 'c_n_ratio' ~ 'C:N~ratio'),
            # convert to factor to sort variables non-alphabetically
            label = factor(label,
@@ -141,11 +168,7 @@ make_preds <- function(model) {
                                      'delta^{15}~N~\'\211\'',
                                      'C~\'\045\'~dry~mass',
                                      'N~\'\045\'~dry~mass',
-                                     'C:N~ratio')),
-           # change fractions back to percentages (x^FALSE = 1, x^TRUE = x)
-           lwr = lwr * (100^grepl('frac', param)),
-           mu = mu * (100^grepl('frac', param)),
-           upr = upr * (100^grepl('frac', param)))
+                                     'C:N~ratio')))
 }
 
 preds <- bind_rows(make_preds(m_d15n),
@@ -154,4 +177,10 @@ preds <- bind_rows(make_preds(m_d15n),
                    make_preds(m_frac_c),
                    make_preds(m_frac_n))
 
+ggplot() +
+  facet_grid(label ~ basin, scales = 'free_y', labeller = label_parsed,
+             switch = 'y') +
+  geom_ribbon(aes(depth_m, ymin = lwr, ymax = upr), preds, alpha = 0.3) +
+  geom_line(aes(depth_m, mu), preds, alpha = 0.5)
+  
 saveRDS(preds, 'analysis/predictions.rds')

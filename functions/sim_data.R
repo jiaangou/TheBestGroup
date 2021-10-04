@@ -1,19 +1,24 @@
 source('functions/noise.R') # for adding noise to simulated data
 
 # function for quick predictions
-sim_data <- function(model = m) {
+sim_data <- function(model.name) {
+  model <- get(model.name)
+  
   # bind new data and all simulations
-  bind_cols(simulate(object = model,
-                     nsim = NREPLICATES, # number of simulations or replicates
-                     seed = 1, # to have consistent results
-                     newdata = new_depths) %>% # data for simulations
-              as_tibble(.name_repair = 'unique'),
-            new_depths) %>%
+  bind_cols(new_depths, # add data used for simulations
+            sim = simulate(object = model, # sims returned on response scale
+                           nsim = 1, # replicates accounted for in `new_depths`
+                           seed = 1, # to have consistent results
+                           newdata = new_depths) %>% # data for simulations
+              as.numeric()) %>% # convert from matrix to vector
     suppressMessages() %>% # prevent messages on change of column names
-    # change to long format
-    pivot_longer(-c('depth_m', 'parameter'),
-                 names_to = 'replicate', values_to = 'sim') %>%
-    # change replicate column from '...1'-'...4' to '1'-'4'
-    mutate(replicate = gsub('...', '', replicate) %>% factor()) %>%
-    noise()
+    mutate(replicate = factor(replicate), # factors are needed for models
+           basin = factor(basin),
+           # remove "m_" from the model name and pass it as the parameter
+           parameter = substr(model.name, start = 3, nchar(model.name)),
+           # move sims to link function to apply normal noise
+           sim = model$family$linkfun(sim)) %>%
+    noise() %>%
+    # move sims back to response scale
+    mutate(sim = model$family$linkinv(sim))
 }

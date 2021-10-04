@@ -5,7 +5,8 @@ library('assertr') # for ensuring simulated data is sensible
 library('gratia')  # for simulation from a fitted GAM
 library('ggplot2') # for fancy plots
 source('functions/sim_data.R') # for simulating data
-NREPLICATES <- 4 # number of sample replicates
+# NREPLICATES <- 4 # number of sample replicates
+# NBASINS <- 4 # number of basins in Gall Lake
 
 # change ggplot theme
 theme_set(theme_bw() +
@@ -29,46 +30,72 @@ isotopes <-
          frac_c = perc_c / 100) # which is appropriate for values bound [0, 1]
 summary(isotopes)
 
-#' NOTE: Gushulak et al. use incorrect distributions (families) for some models,
-#'       but this doesn't matter when generating random data, as long as the
-#'       values are sensible.
+# modeling ----
+# NOTE: Gushulak et al. use incorrect distributions (families) for some models
 
-isotopes_long <-
-  isotopes %>%
-  select(depth_m:perc_c) %>%
-  pivot_longer(-'depth_m', names_to = 'parameter') %>%
-  mutate(parameter = factor(parameter)) # needs to be a factor for gam()
+# d15N and d13C can be positive or negative, so assuming normality is ok
+m_d15n <- gam(d15n ~ s(depth_m, k = 15), # accounts for effect of depth only
+              family = gaussian(link = 'identity'),
+              data = isotopes,
+              method = 'REML') # optimiziation method for the smoothness parameter
 
-# separate intercepts and smooths for each parameter
-m <- gam(value ~ parameter + s(depth_m, by = parameter, k = 15),
-         data = isotopes_long)
-draw(m, scales = 'free')
+m_d13c <- gam(d13c ~ s(depth_m, k = 15),
+              family = gaussian(link = 'identity'),
+              data = isotopes,
+              method = 'REML')
+
+#' There is no family in `mgcv` for values that are strictly between 0 and 100,
+#' so we need to convert %C and %N to the fraction of C and N in the sample.
+#' We can then use the beta distribution for values in the interval [0, 1].
+#' Otherwise, we violate assumptions of normality as above. We use the `logit`
+#' link function to go from [0, 1] to [-Inf, Inf].
+#' If we call the proportions `p` with `0 <= p <= 1`, we have:
+#' `logit([0, 1)) = log(odds(0), odds(1)) = log(0, Inf) = (-Inf, Inf)`
+m_frac_c <- gam(frac_c ~ s(depth_m, k = 15),
+                family = betar(link = 'logit'),
+                data = isotopes,
+                method = 'REML')
+
+m_frac_n <- gam(frac_n ~ s(depth_m, k = 15),
+                family = betar(link = 'logit'),
+                data = isotopes,
+                method = 'REML')
 
 # create simulated dataset ----
-set.seed(7) # to avoid randomness and have consistent results
+set.seed(2) # to avoid randomness and have consistent results
 
 # new dataset
-new_depths <- expand_grid(parameter = unique(isotopes_long$parameter),
-                          depth_m = 1:16) # a sample every meter
+new_depths <-
+  expand_grid(replicate = 1:16, # 4 replicates for 4 basins each
+              depth_m = 1:16) %>% # a sample every meter
+  mutate(basin = ceiling(replicate / 4), # add a column for basin
+         basin = case_when(basin == 1 ~ 'North',
+                           basin == 2 ~ 'West',
+                           basin == 3 ~ 'South',
+                           basin == 4 ~ 'East'),
+         replicate = paste0(basin, '_', replicate)) # add basin to replicate col
 
 new_data <-
-  sim_data() %>%
+  bind_rows(sim_data('m_d13c'),
+            sim_data('m_d15n'),
+            sim_data('m_frac_c'),
+            sim_data('m_frac_n')) %>%
   pivot_wider(values_from = 'sim', names_from = 'parameter') %>%
-  mutate(perc_n = if_else(perc_n < 0, 4, perc_n), # remove the negative value
-         c_n_ratio = perc_c / perc_n) %>% # bound [0, Inf)
-  ungroup() %>%
-  chain_start() %>%
   # ensure fractions are between 0 and 1
-  assert(within_bounds(0, 100), c(perc_n, perc_c)) %>%
-  # ensure ratio is positive
-  assert(within_bounds(0, Inf), c_n_ratio) %>%
-  chain_end()
+  chain_start() %>%
+  assert(within_bounds(0, 1), c(frac_n, frac_c)) %>%
+  chain_end() %>%
+  mutate(c_n_ratio = frac_c / frac_n) # bound [0, Inf)
 
 # check that the simulated data is similar to the original ----
 # pivot the two datasets to long format and bind them together
 datasets <-
-  bind_rows(pivot_longer(new_data,
-                         -c('depth_m', 'replicate'), names_to = 'parameter') %>%
+  bind_rows(mutate(new_data,
+                   perc_c = frac_c * 100, # change fractions to percentages
+                   perc_n = frac_n * 100) %>%
+              select(-frac_c, -frac_n) %>%
+              pivot_longer(-c('depth_m', 'basin', 'replicate'),
+                           names_to = 'parameter') %>%
               mutate(dataset = 'Simulated~data'),
             pivot_longer(isotopes,
                          -'depth_m', names_to = 'parameter') %>%
@@ -99,20 +126,22 @@ ggplot(datasets, aes(depth_m, value)) +
 smoothed <-
   mutate(datasets, dataset = gsub('~', ' ', dataset)) %>% # change '~' to ' '
   ggplot(aes(depth_m, value, color = dataset, fill = dataset)) +
-  facet_grid(label ~ ., scales = 'free_y', labeller = label_parsed,
-             switch = 'y') +
-  geom_smooth(method = 'gam', formula = y ~ s(x), se = TRUE) +
+  facet_wrap(. ~ label, scales = 'free_y', labeller = label_parsed,
+             strip.position = 'left') +
   geom_line(aes(depth_m, value, group = replicate), inherit.aes = FALSE,
-            filter(datasets, dataset == 'Simulated~data'), alpha = 0.3) +
-  scale_x_reverse() +
+            filter(datasets, dataset == 'Simulated~data'), alpha = 0.15) +
+  geom_smooth(method = 'gam', formula = y ~ s(x), se = TRUE) +
   scale_color_brewer(NULL, type = 'qual', palette = 6) +
   scale_fill_brewer(NULL, type = 'qual', palette = 6) +
-  labs(x = 'Water depth (m)', y = NULL); smoothed
+  labs(x = 'Water depth (m)', y = NULL) +
+  xlim(c(0, NA)) +
+  theme(legend.position = c(0.85, 0.2)); smoothed
 
 ggsave(filename = 'figures/smoothed-datasets.png', plot = smoothed, width = 4,
-       height = 4, scale = 1.5)
+       height = 2, scale = 2)
 
 # write the new dataset as a csv ----
 new_data %>%
   select(-c(c_n_ratio)) %>% # remove column to make more realistic
+  relocate(basin, replicate, depth_m) %>%
   readr::write_csv(file = 'data/simulated-data.csv')
