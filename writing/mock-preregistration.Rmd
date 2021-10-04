@@ -2,7 +2,7 @@
 title: "LDP Mock Preregistration"
 author:
 - name: Kirsten Bevandick
-  affiliation: 1
+  affiliation: 2
 - name: Kate Colson
   affiliation: 1
 - name: Stefano Mezzini
@@ -115,25 +115,13 @@ Enter your response here.
 
 ## Study type
 
-**Experiment**. A researcher randomly assigns treatments to study subjects, this includes field or lab experiments. This is also known as an intervention experiment and includes randomized controlled trials.
-
-**Observational Study**. Data is collected from study subjects that are not randomly assigned to a treatment. This includes surveys, natural experiments, and regression discontinuity designs.
-
-**Meta-Analysis**. A systematic review of published studies.
-
-**Other**. Please explain.
+The proposed study is an observational study. Surface layer soil samples will be collected from various transects of a lake bed. A number of analyses will be performed on these samples. For further details see the sampling plan and description of variables below.
 
 ## Blinding
 
 <!-- Blinding describes who is aware of the experimental manipulations within a study. Select all that apply. Is there any additional blinding in this study? -->
 
-No blinding is involved in this study.
-
-For studies that involve human subjects, they will not know the treatment group to which they have been assigned.
-
-Personnel who interact directly with the study subjects (either human or non-human subjects) will not be aware of the assigned treatments.
-
-Personnel who analyze the data collected from the study are not aware of the treatment applied to any given group.
+Personnel who collect samples will be aware of the location, and depth the samples were collected at. Each sample will be labeled with a number so when the variables are measured, personnel will not be aware of the location or depth of the samples.
 
 ## Study design
 
@@ -144,7 +132,7 @@ This question has a variety of possible answers. The key is for a researcher to 
 
 Example: We have a between subjects design with 1 factor (sugar by mass) with 4 levels. -->
 ```
-Enter your response here.
+This study is conducted as a correlational study design. We are interesting in discovering how our variables (Stable isotopic ratio of nitrogen (N) and carbon(C); C:N ratio; %N content; %C content) change over a depth gradient (1 - 16 m).
 
 ## Randomization
 
@@ -261,7 +249,7 @@ Example: We will take the mean of the two questions above to create a single mea
 
 Using generalized additive models, we will be determining the percent content of nitrogen and carbon in the depth intervals of Gall lake by manipulating the stable isotope content of these elements. Specifically, gamma distributions as described by @mushet2020 will be used to determine the percent content. In R scripts, the manipulated variables will be named `perc_n` and `perc_c` for nitrogen and carbon, respectively.
 
- *equation?*
+*equation?*
 
 # Analysis Plan
 
