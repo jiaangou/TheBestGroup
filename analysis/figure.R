@@ -52,7 +52,7 @@ ggplot() +
 ggplot() +
   facet_grid(label ~ basin, scales = 'free_y', labeller = label_parsed,
              switch = 'y') +
-  geom_ribbon(aes(depth_m, ymin = lwr, ymax = upr), preds_g, alpha = 0.3,
+  geom_ribbon(aes(depth_m, ymin = lwr, ymax = upr), preds_g, alpha = 0.5,
               fill = 'darkorange') +
   geom_ribbon(aes(depth_m, ymin = lwr, ymax = upr), preds, alpha = 0.3) +
   geom_point(aes(depth_m, value), isotopes_long, alpha = 0.5) +
@@ -60,9 +60,9 @@ ggplot() +
              tibble(x = 5, y = 0,
                     label = factor(c('C:N~ratio', 'C~\'\045\'~dry~mass'),
                                    levels(isotopes_long$label)))) +
-  geom_line(aes(depth_m, mu), preds_g, alpha = 0.5, color = 'darkorange') +
-  geom_line(aes(depth_m, mu), preds, alpha = 0.5) +
+  geom_line(aes(depth_m, mu), preds_g, color = 'darkorange') +
+  geom_line(aes(depth_m, mu), preds) +
   labs(x = 'Water depth (m)', y = NULL)
 
 # save figure
-ggsave('figures/isotope-models.png', scale = 1.5, width = 8, height = 4)
+ggsave('figures/isotope-models.png', scale = 2, width = 6, height = 3)
