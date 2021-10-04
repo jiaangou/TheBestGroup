@@ -98,7 +98,7 @@ Example: Effect of sugar on brownie tastiness. -->
 
 Example: Though there is strong evidence to suggest that sugar affects taste preferences, the effect has never been demonstrated in brownies. Therefore, we will measure taste preference for four different levels of sugar concentration in a standard brownie recipe to determine if the effect exists in this pastry. -->
 ```
-Enter your response here.
+Whole-lake ecosystem processes are complex and hard to quantify. This is because ecosystem processes such as carbon and nitrogen cycling are determined by the composition and abundance of aquatic organisms, which themselves are highly heterogeneous and spatiotemporally-structured by a multitude of physical and chemical factors. Although studies that examine whole-lake ecosystem processes have focused primarily on pelagic production, @gushulak_effects_2021 showed, using stable isotope and nutrient concentration profiles of $\delta^{13}C$ and $\delta^{15}N$, that phytobenthic production and community composition also varies with lake depth. In this study, our objective is to replicate their study to test the robustness of their results and the validity of their approach.
 
 ## Hypotheses
 
@@ -107,7 +107,7 @@ Enter your response here.
 
 Example: If taste affects preference, then mean preference indices will be higher with higher concentrations of sugar. -->
 ```
-Enter your response here.
+We hypothesize that stable isotope signatures ( $\delta^{13}C$ and $\delta^{15}N$) and nutrient profiles (carbon and nitrogen concentrations, C/N ratio) varies with water depth.
 
 # Design Plan
 
@@ -173,11 +173,11 @@ The answer to this question requires a specific set of instructions so that anot
 
 Example: Participants will be recruited through advertisements at local pastry shops. Participants will be paid $10 for agreeing to participate (raised to $30 if our sample size is not reached within 15 days of beginning recruitment). Participants must be at least 18 years old and be able to eat the ingredients of the pastries. -->
 ```
-Data will be collected at the Gall Lake study site ($50^{o} 11''$ N, $90^{o} 42''$ W) located in Ontario, Canada.This undisturbed study site is surrounded by boreal forest with a high abundance of black spruce, jack pine, and poplar and a lower abundance of birch, balsam fir, and larch. \@kingsbury2012 have described the physical and chemical characteristics of Gall Lake.
+Data will be collected at the Gall Lake study site ($50^{o} 11''$ N, $90^{o} 42''$ W) located in Ontario, Canada.This undisturbed study site is surrounded by boreal forest with a high abundance of black spruce, jack pine, and poplar and a lower abundance of birch, balsam fir, and larch. \@kingsbury2012 have described the physical and chemical characteristics of Gall Lake. Data collection will take place in the summers of 2022, 2023, and 2024.
 
-Surface sediment samples (0-1cm) will be collected using a mini-Glew gravity coring apparatus [@glew1991] from 112 locations along three depth transects in Gall Lake's eastern basin, as was done in @gushulak_effects_2021.
+Surface sediment samples (0-1cm) will be collected using a mini-Glew gravity coring apparatus [@glew1991] as was done in @gushulak2021 at sequential depht intervals, determined using depth sounders [@gushulak2021]. The surface sediment sampling will be along three depth transects in each of the basins of Gall Lake, to expand upon the area covered in @gushulak2021 and account for any differences in deposition to the surface sediments due to currents, input, and mixing in Gall Lake. This expansion of coverage will allow for spatial variation among basins, as well as for variation within basins, to be considered in the geochemical analysis of the replication study.
 
-The stable isotope analysis from the surface sediment samples will be conducted using standard methods [@savage2004; @bunting2010] using Thermo Finnigan Delta V isotope ratio mass spectrometer that is equipped with a ConFlow IV dilution inlet system, to ensure consistency with the methods of @gushulak_effects_2021.
+The stable isotope analysis from the surface sediment samples will be conducted using standard methods [@savage2004; @bunting2010] using Thermo Finnigan Delta V isotope ratio mass spectrometer that is equipped with a ConFlow IV dilution inlet system, to ensure consistency with the methods of @gushulak2021.
 
 ## Sample size
 
@@ -186,7 +186,7 @@ The stable isotope analysis from the surface sediment samples will be conducted 
 
 Example: Our target sample size is 280 participants. We will attempt to recruit up to 320, assuming that not all will complete the total task. -->
 ```
-Enter your response here.
+There will be 4 surface sediment samples taken at each of the 16 depth intervals (1-2m, 2-3m, 3-4m, etc.) along the depth transects in each basin of Gall Lake. This will result in a sample size N=256 for our replication study.
 
 ## Sample size rationale
 
@@ -195,7 +195,7 @@ Enter your response here.
 
 Example: We used the software program G*Power to conduct a power analysis. Our goal was to obtain .95 power to detect a medium effect size of .25 at the standard .05 alpha error probability. -->
 ```
-Enter your response here.
+We will be working in a Bayesian framework, such that a power analysis is not applicable. Our sample size was therefore determined due to contraints in time and budget.
 
 ## Stopping rule
 
@@ -206,7 +206,7 @@ You may specify a stopping rule based on p-values only in the specific case of s
 
 Example: We will post participant sign-up slots by week on the preceding Friday night, with 20 spots posted per week. We will post 20 new slots each week if, on that Friday night, we are below 320 participants. -->
 ```
-Enter your response here.
+We will sample each 1m depth interval (e.g. 1-2m, 2-3m, 3-4m, etc.) until we reach the deepest point of Gall Lake (\~17m; [@kingsbury2012]).
 
 # Variables
 
