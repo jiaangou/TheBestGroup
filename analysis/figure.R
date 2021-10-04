@@ -65,4 +65,4 @@ ggplot() +
   labs(x = 'Water depth (m)', y = NULL)
 
 # save figure
-ggsave('figures/isotope-models.png', scale = 1, width = 4, height = 8)
+ggsave('figures/isotope-models.png', scale = 1.5, width = 8, height = 4)
