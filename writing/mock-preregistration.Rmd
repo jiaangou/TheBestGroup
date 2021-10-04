@@ -1,5 +1,5 @@
 ---
-title: "LDP Mock Preregistration"
+title: 'Spatio-temporal variation of benthic phototrophic elemental signatures along depth profiles'
 author:
 - name: Kirsten Bevandick
   affiliation: 2
@@ -25,25 +25,7 @@ csl: freshwater-biology.csl
 shorttitle: ''
 ---
 
-```{=html}
 <!--
-To make or update the .bib file:
-- import the bib file as a new collection (or update the existing one):
-  * File => import => next => select the file => (un)select "add to new collection" => ...
-- add any papers by DOI with the wand button
-- export the collection to a bib file by right-clicking on the collection and creating
-  a new BibTeX file and over-writing "prod-reprod-class-assignment-2.bib"
-- don't forget to push it to the GitHub repo!
--->
-```
-Citations in parentheses: [@gushulak_effects_2021], [but also, see @gushulak_effects_2021]
-
-Citation out of parentheses: @gushulak_effects_2021 state that...
-
-See what references you can add by opening the .bib file in a RStudio and using the name after `@{article` (e.g. `@article{gushulak_effects_2021`), or by running `citr:::insert_citation()` (requires installing `citr`).
-
-NOTE: to knit using a bib file, you will need to install a different version of `prereg` using `remotes::install_github("crsh/prereg@issue-16")`. not sure why this happens. -- Stefano
-
 # Roles
 
 1.  **Research question + hypothesis** (William)
@@ -79,7 +61,7 @@ NOTE: to knit using a bib file, you will need to install a different version of 
 5.  **Literature** (Julee)
 
     -   Does the pre-registration include in-text citations and a bibliography of all studies mentioned?
-
+-->
 # Study Information
 
 ## Title
@@ -93,76 +75,39 @@ Example: Effect of sugar on brownie tastiness. -->
 
 ## Description
 
-```{=html}
-<!-- Please give a brief description of your study, including some background, the purpose of the of the study, or broad research questions. The description should be no longer than the length of an abstract. It can give some context for the proposed study, but great detail is not needed here for your preregistration.
-
-Example: Though there is strong evidence to suggest that sugar affects taste preferences, the effect has never been demonstrated in brownies. Therefore, we will measure taste preference for four different levels of sugar concentration in a standard brownie recipe to determine if the effect exists in this pastry. -->
-```
-Whole-lake ecosystem processes are complex and hard to quantify. This is because ecosystem processes such as carbon and nitrogen cycling are determined by the composition and abundance of aquatic organisms, which themselves are highly heterogeneous and spatiotemporally-structured by a multitude of physical and chemical factors. Although studies that examine whole-lake ecosystem processes have focused primarily on pelagic production, @gushulak_effects_2021 showed, using stable isotope and nutrient concentration profiles of $\delta^{13}C$ and $\delta^{15}N$, that phytobenthic production and community composition also varies with lake depth. In this study, our objective is to replicate their study to test the robustness of their results and the validity of their approach.
+Whole-lake ecosystem processes are complex and hard to quantify. Carbon and nitrogen cycling depend on the composition and abundance of a aquatic organisms, which, in turn, can vary spatio-temporally due to many physical and chemical factors. While most studies on whole-lake ecosystem processes focused focused primarily on pelagic production, @gushulak_effects_2021 presented the first study on nutrient cycling using depth profiles. Using stable isotope and $\color{red}{\text{nutrient}}$ concentration profiles of $\delta^{13}$C, $\delta^{15}$N, total C, total N, and the ratio of C to N, they determined that intermediate lake depths offered the best conditions for maximum phytobenthic production. In this study, our objective is to replicate the study by @gushulak_effects_2021 while also accounting for the variation between different locations of the lake.
 
 ## Hypotheses
 
-```{=html}
-<!-- List specific, concise, and testable hypotheses. Please state if the hypotheses are directional or non-directional. If directional, state the direction. A predicted effect is also appropriate here. If a specific interaction or moderation is important to your research, you can list that as a separate hypothesis.
-
-Example: If taste affects preference, then mean preference indices will be higher with higher concentrations of sugar. -->
-```
-We hypothesize that stable isotope signatures ( $\delta^{13}C$ and $\delta^{15}N$) and nutrient profiles (carbon and nitrogen concentrations, C/N ratio) varies with water depth.
+Since light availability and disturbance due to currents and mixis affect phytobenthic production, we hypothesize that productivity will be highest at intermediate lake depths, where disturbance is low but the lake is shallow enough to allow large quantities of light to penetrate to the benthic region.
 
 # Design Plan
 
-<!-- In this section, you will be asked to describe the overall design of your study. Remember that this research plan is designed to register a single study, so if you have multiple experimental designs, please complete a separate preregistration. -->
-
 ## Study type
 
-The proposed study is an observational study. Surface layer soil samples will be collected from various transects of a lake bed. A number of analyses will be performed on these samples. For further details see the sampling plan and description of variables below.
+The proposed study is an observational study. Surface layer soil samples will be collected from various transects within the bed of Gall Lake. Isotopic signatures ($\delta^{13}$C, $\delta^{15}$N) and elemental composition (%C, %N, C:N) will be measured in each sample. For further details see the sampling plan and description of variables below.
 
 ## Blinding
 
-<!-- Blinding describes who is aware of the experimental manipulations within a study. Select all that apply. Is there any additional blinding in this study? -->
-
-Personnel who collect samples will be aware of the location, and depth the samples were collected at. Each sample will be labeled with a number so when the variables are measured, personnel will not be aware of the location or depth of the samples.
+Personnel who collect samples will be aware of the location, and depth the samples were collected at. Each sample will be labeled with a non-descriptive code to remove all information regarding the samples' locations and depths.
 
 ## Study design
 
-```{=html}
-<!-- Describe your study design. Examples include two-group, factorial, randomized block, and repeated measures. Is it a between (unpaired), within-subject (paired), or mixed design? Describe any counterbalancing required. Typical study designs for observation studies include cohort, cross sectional, and case-control studies.
-
-This question has a variety of possible answers. The key is for a researcher to be as detailed as is necessary given the specifics of their design. Be careful to determine if every parameter has been specified in the description of the study design. There may be some overlap between this question and the following questions. That is OK, as long as sufficient detail is given in one of the areas to provide all of the requested information. For example, if the study design describes a complete factorial, 2 X 3 design and the treatments and levels are specified previously, you do not have to repeat that information.
-
-Example: We have a between subjects design with 1 factor (sugar by mass) with 4 levels. -->
-```
-This study is conducted as a correlational study design. We are interesting in discovering how our variables (Stable isotopic ratio of nitrogen (N) and carbon(C); C:N ratio; %N content; %C content) change over a depth gradient (1 - 16 m).
+Superficial soil samples (0-1 cm of depth) will be collected at 1-meter depth intervals (up to 16 m) in Gall Lake, Ontario, Canada, following four orthogonal transects (North, East, South, West). Four independent replicates will be performed along each transect, for a total of $16 \times 4 \times 4 = 256$ soil samples.
 
 ## Randomization
 
-```{=html}
-<!-- If you are doing a randomized study, how will you randomize, and at what level? Typical randomization techniques include: simple, block, stratified, and adaptive covariate randomization. If randomization is required for the study, the method should be specified here, not simply the source of random numbers.
-
-Example: We will use block randomization, where each participant will be randomly assigned to one of the four equally sized, predetermined blocks. The random number list used to create these four blocks will be created using the web applications available at https://random.org. -->
-```
-Enter your response here.
+No randomization will be present in the study. To avoid anthropogenic sources of variation, all samples will be taken by a single individual on the same week. Samples will also be analyzed by a single technician in a single mass spectrometer.
 
 # Sampling Plan
 
-<!-- In this section we’ll ask you to describe how you plan to collect samples, as well as the number of samples you plan to collect and your rationale for this decision. Please keep in mind that the data described in this section should be the actual data used for analysis, so if you are using a subset of a larger dataset, please describe the subset that will actually be used in your study. -->
-
 ## Existing data
 
-<!-- Preregistration is designed to make clear the distinction between confirmatory tests, specified prior to seeing the data, and exploratory analyses conducted after observing the data. Therefore, creating a research plan in which existing data will be used presents unique challenges. Please select the description that best describes your situation. Please do not hesitate to contact us if you have questions about how to answer this question (prereg@cos.io). -->
-
-**Registration prior to creation of data**. As of the date of submission of this research plan for preregistration, the data have not yet been collected, created, or realized.
+**Registration prior to creation of data**. As of the date of submission of this research plan for preregistration, the data have not yet been collected, created, or realized. All data presented here was simulated based on the data from @gushulak_effects_2021.
 
 ## Explanation of existing data
 
-```{=html}
-<!-- If you indicate that you will be using some data that already exist in this study, please describe the steps you have taken to assure that you are unaware of any patterns or summary statistics in the data. This may include an explanation of how access to the data has been limited, who has observed the data, or how you have avoided observing any analysis of the specific data you will use in your study.
-
-An appropriate instance of using existing data would be collecting a sample size much larger than is required for the study, using a small portion of it to conduct exploratory analysis, and then registering one particular analysis that showed promising results. After registration, conduct the specified analysis on that part of the dataset that had not been investigated by the researcher up to that point.
-
-Example: An appropriate instance of using existing data would be collecting a sample size much larger than is required for the study, using a small portion of it to conduct exploratory analysis, and then registering one particular analysis that showed promising results. After registration, conduct the specified analysis on that part of the dataset that had not been investigated by the researcher up to that point. -->
-```
-Existing data will not be used in our replication study.
+Existing data will not be used in our replication study; all data will be sampled after submitting the preregistration.
 
 ## Data collection procedures
 
@@ -173,11 +118,12 @@ The answer to this question requires a specific set of instructions so that anot
 
 Example: Participants will be recruited through advertisements at local pastry shops. Participants will be paid $10 for agreeing to participate (raised to $30 if our sample size is not reached within 15 days of beginning recruitment). Participants must be at least 18 years old and be able to eat the ingredients of the pastries. -->
 ```
-Data will be collected at the Gall Lake study site ($50^{o} 11''$ N, $90^{o} 42''$ W) located in Ontario, Canada.This undisturbed study site is surrounded by boreal forest with a high abundance of black spruce, jack pine, and poplar and a lower abundance of birch, balsam fir, and larch. \@kingsbury2012 have described the physical and chemical characteristics of Gall Lake. Data collection will take place in the summers of 2022, 2023, and 2024.
 
-Surface sediment samples (0-1cm) will be collected using a mini-Glew gravity coring apparatus [@glew1991] as was done in @gushulak2021 at sequential depht intervals, determined using depth sounders [@gushulak2021]. The surface sediment sampling will be along three depth transects in each of the basins of Gall Lake, to expand upon the area covered in @gushulak2021 and account for any differences in deposition to the surface sediments due to currents, input, and mixing in Gall Lake. This expansion of coverage will allow for spatial variation among basins, as well as for variation within basins, to be considered in the geochemical analysis of the replication study.
+Data will be collected at the Gall Lake study site ($50^{\circ} 11''$ N, $90^{\circ} 42''$ W) located in Ontario, Canada. This undisturbed study site is surrounded by boreal forest with a high abundance of black spruce, jack pine, and poplar and a lower abundance of birch, balsam fir, and larch [@kingsbury_consistent_2012]. Data collection will take place in a single week during the summer of 2022.
 
-The stable isotope analysis from the surface sediment samples will be conducted using standard methods [@savage2004; @bunting2010] using Thermo Finnigan Delta V isotope ratio mass spectrometer that is equipped with a ConFlow IV dilution inlet system, to ensure consistency with the methods of @gushulak2021.
+Surface sediment samples (0-1cm) will be collected using a mini-Glew gravity coring apparatus [@glew_miniature_1991] as was done in @gushulak_effects_2021 at sequential depht intervals, determined using depth sounders [@gushulak_effects_2021]. The surface sediment sampling will be along three depth transects in each of the basins of Gall Lake, to expand upon the area covered in @gushulak_effects_2021 and account for any differences in deposition to the surface sediments due to currents, input, and mixing in Gall Lake. This expansion of coverage will allow for spatial variation among basins, as well as for variation within basins, to be considered in the geochemical analysis of the replication study.
+
+The stable isotope analysis from the surface sediment samples will be conducted using standard methods [@savage_distribution_2004; @bunting_regulation_2010] using Thermo Finnigan Delta V isotope ratio mass spectrometer that is equipped with a ConFlow IV dilution inlet system, to ensure consistency with the methods of @gushulak_effects_2021.
 
 ## Sample size
 
@@ -206,7 +152,7 @@ You may specify a stopping rule based on p-values only in the specific case of s
 
 Example: We will post participant sign-up slots by week on the preceding Friday night, with 20 spots posted per week. We will post 20 new slots each week if, on that Friday night, we are below 320 participants. -->
 ```
-We will sample each 1m depth interval (e.g. 1-2m, 2-3m, 3-4m, etc.) until we reach the deepest point of Gall Lake (\~17m; [@kingsbury2012]).
+We will sample each 1m depth interval (e.g. 1-2m, 2-3m, 3-4m, etc.) until we reach the deepest point of Gall Lake (\~17m; [@kingsbury_consistent_2012]).
 
 # Variables
 
@@ -234,7 +180,7 @@ Example: The single outcome variable will be the perceived tastiness of the sing
 ```
 #### Stable Isotopic Analysis
 
-The single outcome variables for the stable isotopic ratio of nitrogen and carbon will be measured from freeze-dried sediment subsamples of Gall Lake. Samples will be placed in a Thermo Finnigan Delta V isotope ratio mass spectrometer that has a ConFlow IV dilution inlet system as described by @gushulak_effects_2021 Following the calibration procedure for laboratory standards explained in @bunting2010 and @savage2004 , the isotope values will be analyzed with the use of atmospheric gas. The standard notation for the stable isotopic ratio of nitrogen and carbon are $\delta^{15}$N and $\delta^{13}$C, respectively. In R scripts, these single outcome variables will be named `d15n` and `d13c` for nitrogen and carbon, respectively.
+The single outcome variables for the stable isotopic ratio of nitrogen and carbon will be measured from freeze-dried sediment subsamples of Gall Lake. Samples will be placed in a Thermo Finnigan Delta V isotope ratio mass spectrometer that has a ConFlow IV dilution inlet system as described by @gushulak_effects_2021 Following the calibration procedure for laboratory standards explained in @bunting_regulation_2010 and @savage_distribution_2004 , the isotope values will be analyzed with the use of atmospheric gas. The standard notation for the stable isotopic ratio of nitrogen and carbon are $\delta^{15}$N and $\delta^{13}$C, respectively. In R scripts, these single outcome variables will be named `d15n` and `d13c` for nitrogen and carbon, respectively.
 
 ## Indices
 
@@ -247,7 +193,7 @@ Example: We will take the mean of the two questions above to create a single mea
 ```
 #### Nitrogen and Carbon Content
 
-Using generalized additive models, we will be determining the percent content of nitrogen and carbon in the depth intervals of Gall lake by manipulating the stable isotope content of these elements. Specifically, gamma distributions as described by @mushet2020 will be used to determine the percent content. In R scripts, the manipulated variables will be named `perc_n` and `perc_c` for nitrogen and carbon, respectively.
+Using generalized additive models, we will be determining the percent content of nitrogen and carbon in the depth intervals of Gall lake by manipulating the stable isotope content of these elements. Specifically, gamma distributions as described by @mushet_bottom-up_2020 will be used to determine the percent content. In R scripts, the manipulated variables will be named `perc_n` and `perc_c` for nitrogen and carbon, respectively.
 
 *equation?*
 
