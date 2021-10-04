@@ -56,13 +56,11 @@ NOTE: to knit using a bib file, you will need to install a different version of 
 
     -   include at least 1 testable hypothesis?
 
-2.  **Data** (Julee, Kate)
 
     -   Description of existing data and/or data collection procedures? (If existing data is included, is the reference(s) to the original data source included?)
 
     -   A description of the variables included in the dataset and/or to be included in the analysis
 
-    -   A study design plan?
 
 3.  **Analysis**
 
