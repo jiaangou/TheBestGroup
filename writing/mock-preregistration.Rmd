@@ -233,7 +233,7 @@ Example: We manipulated the percentage of sugar by mass added to brownies. The f
 ```
 #### Depth
 
-For phytobenthos analyses, we will manipulate the depth that surface sediment samples are collected. Three sediment samples will be collected for every 1-m depth interval of Gall Lake. Samples for this categorical variable will range from a 1-m to 16-m depth and will be determined with the use of a depth sounder. In R scripts, this manipulated variable will be named "depth_m".
+For phytobenthos analyses, we will manipulate the depth that surface sediment samples are collected. Four sediment samples will be collected for every 1-m depth interval of Gall Lake. Samples for this categorical variable will range from a 1-m to 16-m depth and will be determined with the use of a depth sounder [@gushulak_effects_2021]. In R scripts, this manipulated variable will be named `depth_m`.
 
 ## Measured variables
 
@@ -246,7 +246,7 @@ Example: The single outcome variable will be the perceived tastiness of the sing
 ```
 #### Stable Isotopic Analysis
 
-The single outcome variables for the stable isotopic ratio of nitrogen and carbon will be measured from freeze-dried sediment subsamples of Gall Lake. Samples will be placed in a Thermo Finnigan Delta V isotope ratio mass spectrometer that has a ConFlow IV dilution inlet system as described by \@gushulak_effects_2021. Following the calibration procedure for laboratory standards explained in Bunting et al. (2010) and Savage et al. (2004), the isotope values will be analyzed with the use of atmospheric gas. The standard notation for the stable isotopic ratio of nitrogen and carbon are 15N and 13C, respectively. In R scripts, these single outcome variables will be named "d15n" and "d13c" for nitrogen and carbon, respectively. *how do we use symbols in R markdown?*
+The single outcome variables for the stable isotopic ratio of nitrogen and carbon will be measured from freeze-dried sediment subsamples of Gall Lake. Samples will be placed in a Thermo Finnigan Delta V isotope ratio mass spectrometer that has a ConFlow IV dilution inlet system as described by @gushulak_effects_2021 Following the calibration procedure for laboratory standards explained in @bunting2010 and @savage2004 , the isotope values will be analyzed with the use of atmospheric gas. The standard notation for the stable isotopic ratio of nitrogen and carbon are $\delta^{15}$N and $\delta^{13}$C, respectively. In R scripts, these single outcome variables will be named `d15n` and `d13c` for nitrogen and carbon, respectively.
 
 ## Indices
 
@@ -259,7 +259,9 @@ Example: We will take the mean of the two questions above to create a single mea
 ```
 #### Nitrogen and Carbon Content
 
-Using generalized additive models, we will be determining the percent content of nitrogen and carbon in the depth intervals of Gall lake by manipulating the stable isotope content of these elements. Specifically, gamma distributions as described by Mushet et al. (2019) will be used to determine the percent content. In R scripts, the manipulated variables will be named "perc_n" and "perc_c" for nitrogen and carbon, respectively. *equation?*
+Using generalized additive models, we will be determining the percent content of nitrogen and carbon in the depth intervals of Gall lake by manipulating the stable isotope content of these elements. Specifically, gamma distributions as described by @mushet2020 will be used to determine the percent content. In R scripts, the manipulated variables will be named `perc_n` and `perc_c` for nitrogen and carbon, respectively.
+
+ *equation?*
 
 # Analysis Plan
 
