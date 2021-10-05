@@ -37,6 +37,7 @@ header-includes:
 output: bookdown::pdf_document2 # more compact
 ---
 
+```{=html}
 <!--
 # Roles
 
@@ -74,6 +75,7 @@ output: bookdown::pdf_document2 # more compact
 
 -   Does the pre-registration include in-text citations and a bibliography of all studies mentioned?
 -->
+```
 # Study Information
 
 ## Title
@@ -82,7 +84,7 @@ output: bookdown::pdf_document2 # more compact
 
 ## Description
 
-Whole-lake ecosystem processes are complex and hard to quantify. Carbon and nitrogen cycling depend on the composition and abundance of a aquatic organisms, which, in turn, can vary spatio-temporally due to many physical and chemical factors. While most studies on whole-lake ecosystem processes focused focused primarily on pelagic production, @gushulak_effects_2021 presented the first study on nutrient cycling using depth profiles. Using depth profiles of soil $\delta^{13}$C, $\delta^{15}$N, percent C, percent N, and the C to N ratio, they determined that intermediate lake depths offered the best conditions for maximum phytobenthic production. The objective of our study is to replicate the study by @gushulak_effects_2021 while also accounting for the variation between different locations of the lake.
+Whole-lake ecosystem processes are complex and hard to quantify. Carbon and nitrogen cycling depend on the composition and abundance of a aquatic organisms, which, in turn, can vary spatio-temporally due to many physical and chemical factors. While most studies on whole-lake ecosystem processes have focused primarily on pelagic production, @gushulak_effects_2021 presented the first study on nutrient cycling using depth profiles. Using depth profiles of soil $\delta^{13}$C, $\delta^{15}$N, percent C, percent N, and the C to N ratio, they determined that intermediate lake depths offered the best conditions for maximum phytobenthic production. The objective of our study is to replicate the study by @gushulak_effects_2021 while also accounting for the variation between different locations of the lake.
 
 ## Hypothesis
 
@@ -164,7 +166,7 @@ $\mathbf{\delta^{15}}$**N**: The $^{15}$N isotopic signature will be measured us
 
 # Analysis Plan
 
-All analysis will be performed in `R` [@r_core_team_r_2021]. Data wrangling will be performed with packages from the `tidyverse` set of packages [@wickham_welcome_2019]. All supporting `R` scripts, simulated data, and supporting figures are available in the public GitHub repository at https://github.com/jiaangou/TheBestGroup/.
+All analysis will be performed in `R` [@r_core_team_r_2021]. Data wrangling will be performed with packages from the `tidyverse` set of packages [@wickham_welcome_2019]. All supporting `R` scripts, simulated data, and supporting figures are available in the public GitHub repository at <https://github.com/jiaangou/TheBestGroup/>.
 
 ## Statistical models
 
@@ -188,7 +190,7 @@ Although credible intervals will be estimated, this study will be performed in a
 
 The only data transformation that was performed was the conversion of percent carbon and nitrogen (between 0% and 100%) to proportions (between 0 and 1). Note that since the transformation $a = \frac{b}{100}$ is a linear transformation, Jensen's inequality does not apply here [@jensen_sur_1906].
 
-Modeling the data with GAMs removes the need for transforming data that violates the normality assumptions which linear models depend on. Since GAMs estimate transformed mean responses ($g[\mathbb E(Y)]$, where $g(\cdot)$ is the link function) rather than the mean transformed response ($\mathbb E[g(Y)]$), Jensen's inequality [@jensen_sur_1906] does not apply here. 
+Modeling the data with GAMs removes the need for transforming data that violates the normality assumptions which linear models depend on. Since GAMs estimate transformed mean responses ($g[\mathbb E(Y)]$, where $g(\cdot)$ is the link function) rather than the mean transformed response ($\mathbb E[g(Y)]$), Jensen's inequality [@jensen_sur_1906] does not apply here.
 
 ## Inference criteria
 
@@ -273,6 +275,7 @@ m_c_n <-
 ```
 
 ## Prediction example
+
 ```{r, eval = FALSE}
 # predicting using m_c_n model (given a dataset `new_data`)
 bind_cols(
@@ -299,6 +302,8 @@ knitr::include_graphics('../figures/isotope-models.png')
 # References
 
 <!-- uncomment the tex section if using output: prereg::cos_prereg -->
+
+```{=html}
 <!--
 ```{=tex}
 \vspace{-2pc}
@@ -307,4 +312,5 @@ knitr::include_graphics('../figures/isotope-models.png')
 \setlength{\parskip}{8pt}
 ```
 -->
+```
 \noindent
