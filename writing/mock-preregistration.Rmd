@@ -84,7 +84,7 @@ output: bookdown::pdf_document2 # more compact
 
 Whole-lake ecosystem processes are complex and hard to quantify. Carbon and nitrogen cycling depend on the composition and abundance of a aquatic organisms, which, in turn, can vary spatio-temporally due to many physical and chemical factors. While most studies on whole-lake ecosystem processes focused focused primarily on pelagic production, @gushulak_effects_2021 presented the first study on nutrient cycling using depth profiles. Using depth profiles of soil $\delta^{13}$C, $\delta^{15}$N, percent C, percent N, and the C to N ratio, they determined that intermediate lake depths offered the best conditions for maximum phytobenthic production. The objective of our study is to replicate the study by @gushulak_effects_2021 while also accounting for the variation between different locations of the lake.
 
-## Hypotheses
+## Hypothesis
 
 Since light availability and disturbance due to currents and mixis affect phytobenthic production, we hypothesize that productivity will be highest at intermediate lake depths, where disturbance is low but the lake is shallow enough to allow large quantities of light to penetrate to the benthic region.
 
@@ -148,9 +148,9 @@ All measured variables will be reported as was done by @gushulak_effects_2021.
 
 **Depth**: The depth of Gall Lake will be measured along four transects in the lake's basins using a depth sounder as @gushulak_effects_2021 did. Four sediment samples will be collected at every 1-m depth interval along each transect from 1 m to 16 m of depth. In all `R` scripts and data files, the variable will be named `depth_m`.
 
-$\mathbf{\delta^{13}}$**C**: The $^{13}$C isotopic signatures will be measured from freeze-dried sediment samples using a Thermo Finnigan Delta V isotope ratio mass spectrometer with a ConFlow IV dilution inlet system, as described by @gushulak_effects_2021. The values will be recorded using the standard $\delta^{13}$C notation (expressed in parts per thousand relative to the Vienna Pee Dee Belemnite standard, VPDB). 
+$\mathbf{\delta^{13}}$**C**: The $^{13}$C isotopic signatures will be measured from freeze-dried sediment samples using a Thermo Finnigan Delta V isotope ratio mass spectrometer with a ConFlow IV dilution inlet system, as described by @gushulak_effects_2021. The values will be recorded using the standard $\delta^{13}$C notation (expressed in parts per thousand relative to the Vienna Pee Dee Belemnite standard, VPDB). The $^{13}$C values will be referred to as `d13c` in all `R` scripts and datasets.
 
-$\mathbf{\delta^{15}}$**N**: The $^{15}$N isotopic signature will be measured using freeze-dried sediment samples (as above), calibrated using atmospheric gas [@bunting_regulation_2010; @savage_distribution_2004], and recorded using the standard $\delta^{15}$N notation (expressed in parts per thousand relative to the atmospheric abundance of $^{15}$N).
+$\mathbf{\delta^{15}}$**N**: The $^{15}$N isotopic signature will be measured using freeze-dried sediment samples (as above), calibrated using atmospheric gas [@bunting_regulation_2010; @savage_distribution_2004], and recorded using the standard $\delta^{15}$N notation (expressed in parts per thousand relative to the atmospheric abundance of $^{15}$N). The $^{15}$N values will be referred to as `d15n` in all `R` scripts and datasets.
 
 **Nitrogen fraction**: The fraction of nitrogen in the freeze-dried sample, $f_N$, will be calculated using the simple formula $f_N = m_N / m$, where $m_N$ is the mass of nitrogen in the sample and $m$ is the sample's mass. The variable will be named `frac_n` in all datasets and `R` scripts. The percentage of nitrogen in the sample will be used in the figure(s) for consistency with @gushulak_effects_2021, and it will be indicated as `perc_n` in all datasets and `R` scripts (when used).
 
